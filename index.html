@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Купить дрова оптом</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+  }
+
+  /* Главная страница */
+  #main-page {
+    display: block;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Заголовок */
+  #main-title {
+    font-size: 48px;
+    color: violet;
+    margin-bottom: 20px;
+  }
+
+  /* Кнопки */
+.button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* зеленый цвет */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #45a049;
+}
+
+/* Слайдер */
+#slider-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+#slider {
+    width: 100%;
+}
+
+#slide-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#slide-buttons button {
+    margin: 0 10px;
+}
+
+/* Контент под слайдером */
+#content-section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 10px;
+}
+
+/* Вкладка - скрыта по умолчанию */
+.tab {
+    display: none;
+}
+
+/* Вкладка - активна */
+.tab-active {
+    display: block;
+}
+
+/* Внутренние стили для вкладок */
+#magazine, #delivery {
+    padding: 20px;
+}
+
+/* Фото в магазине и доставке */
+img.responsive-img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Кнопки внутри вкладок */
+.tab-button {
+    padding: 15px 30px;
+    margin-top:20px;
+    font-size:18px;
+}
+</style>
+</head>
+<body>
+
+<!-- Главная страница -->
+<div id="main-page">
+<h1 id="main-title">купить дрова оптом</h1>
+<div>
+<button class="button" onclick="showTab('magazine')">Магазин</button>
+<button class="button" onclick="showTab('delivery')">Доставка</button>
+</div>
+
+<!-- Слайдер -->
+<div id="slider-container">
+<img id="slider" src="" alt="Фотография" />
+<div id="slide-buttons">
+<button class="button" onclick="prevSlide()">Предыдущий</button>
+<button class="button" onclick="nextSlide()">Следующий</button>
+</div>
+</div>
+
+<!-- Текст под слайдером -->
+<div id="content-section">
+<p>приветствую тебя! Я расскажу тебе немного о наших дровах. Мы сушим наши дрова 2 недели и поэтому можем с уверенностью сказать что наши дрова на 100% сухие. Наши дрова очень хорошо горят это мнение не только наше но и тысячи наших покупателей, у нас самые лучшие цены на всём рынке. Наша упаковка состоит из очень твёрдого материала который очень тяжело как-то порвать, также наши дрова очень удобно носить в руках, потому что у нашей упаковки есть очень удобная ручка. В одной нашей упаковке от двух видов дерева. Мы готовы сотрудничать с оптовыми базами, у нас очень хорошая доставка с очень приятными ценами.</p>
+</div>
+</div>
+
+<!-- Вкладка Магазин -->
+<div id="magazine" class="tab">
+<h2>Магазин</h2>
+<img src="https://i.ibb.co/qYSNT39g/drov.jpg" alt="Дрова" class="responsive-img"/>
+<p>Цены:</p>
+<ul>
+<li>100 шт. упаковок - <b>19,000 рублей</b></li>
+<li>200 шт. упаковок - <b>38,000 рублей</b></li>
+</ul>
+<button class="tab-button" onclick="window.open('https://t.me/sss757', '_blank')">Заказать сейчас (3)</button><br/><br/>
+<button class="tab-button" onclick="showMainPage()">Вернуться домой</button>
+</div>
+
+<!-- Вкладка Доставка -->
+<div id="delivery" class="tab">
+<h2>Доставка</h2>
+<p>Цены за доставку по Краснодарскому краю:</p>
+<ul>
+<li>За один км - <b>85 руб.</b></li>
+<li>За Краснодарский край за один км - <b>105 руб.</b></li>
+</ul>
+<img src="https://i.ibb.co/6RQ8MtF0/delivery.jpg" alt="Доставка на звере" class="responsive-img"/>
+<p style="text-align:center;">Перевозки осуществляются на этом звере</p><br/>
+<button class="tab-button" onclick="showMainPage()">Вернуться домой</button>
+</div>
+
+<script>
+// Массив изображений для слайдера
+const slides = [
+"https://i.ibb.co/v4Bk0W4B/1.jpg",
+"https://i.ibb.co/7tPD6Mkq/2.jpg",
+"https://i.ibb.co/qYSNT39g/3.jpg"
+];
+
+let currentSlide = 0;
+
+// Функции для переключения слайдов
+function showSlide(index) {
+ document.getElementById('slider').src = slides[index];
+}
+
+function prevSlide() {
+ currentSlide = (currentSlide -1 + slides.length) % slides.length;
+ showSlide(currentSlide);
+}
+
+function nextSlide() {
+ currentSlide = (currentSlide +1) % slides.length;
+ showSlide(currentSlide);
+}
+
+// Инициализация первого слайда
+showSlide(currentSlide);
+
+// Функции для отображения вкладок
+function showTab(tabName) {
+ document.getElementById('main-page').style.display = 'none';
+ document.getElementById('magazine').classList.remove('tab-active');
+ document.getElementById('delivery').classList.remove('tab-active');
+
+ if (tabName === 'magazine') {
+ document.getElementById('magazine').classList.add('tab-active');
+ } else if (tabName === 'delivery') {
+ document.getElementById('delivery').classList.add('tab-active');
+ }
+}
+
+// Возврат на главную страницу
+function showMainPage() {
+ document.getElementById('main-page').style.display = 'block';
+ document.getElementById('magazine').classList.remove('tab-active');
+ document.getElementById('delivery').classList.remove('tab-active');
+}
+</script>
+
+</body>
+</html>
